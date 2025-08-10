@@ -26,6 +26,7 @@
       "node_modules/**",
       "package.json"
     ],
+    "icon": "src/assets/vrm-viewer-logo.ico",
     "asar": true,
     "directories": {
       "buildResources": "build"
@@ -43,7 +44,7 @@
           "name": "VRM Avatar",
           "description": ".vrm avatar file",
           "role": "Viewer",
-          "icon": ""
+          "icon": "src/assets/vrm-viewer-logo.ico"
         }
       ]
     },

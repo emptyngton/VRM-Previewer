@@ -10,6 +10,7 @@ function createMainWindow() {
     width: 1200,
     height: 800,
     backgroundColor: '#1e1e1e',
+    icon: path.join(__dirname, 'assets', 'vrm-viewer-logo.ico'),
     webPreferences: {
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),

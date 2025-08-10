@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import { OrbitControls } from '../../node_modules/three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from '../../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-import { VRMLoaderPlugin, VRMUtils } from '../../node_modules/@pixiv/three-vrm/lib/three-vrm.module.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { VRMLoaderPlugin, VRMUtils } from '@pixiv/three-vrm/three-vrm.module.js';
 
 const appEl = document.getElementById('app');
 const fileInput = document.getElementById('fileInput');
@@ -100,7 +100,14 @@ async function loadVrmFromArrayBuffer(arrayBuffer, srcName = 'buffer') {
 
   const vrm = gltf.userData.vrm;
   if (vrm) {
-    VRMUtils.removeUnnecessaryJoints(gltf.scene);
+    try {
+      VRMUtils.combineSkeletons(gltf.scene);
+    } catch (e) {
+      // fallback for older models if needed
+      if (VRMUtils.removeUnnecessaryJoints) {
+        VRMUtils.removeUnnecessaryJoints(gltf.scene);
+      }
+    }
     VRMUtils.rotateVRM0(vrm);
     scene.add(vrm.scene);
     currentVrm = vrm;
