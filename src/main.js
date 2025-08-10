@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
@@ -18,6 +18,7 @@ function createMainWindow() {
       sandbox: false,
     },
     show: false,
+    autoHideMenuBar: true,
   });
 
   mainWindow.once('ready-to-show', () => {
@@ -29,6 +30,9 @@ function createMainWindow() {
   });
 
   mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'));
+
+  // Ensure the menu bar stays hidden
+  mainWindow.setMenuBarVisibility(false);
 
   mainWindow.webContents.on('did-finish-load', () => {
     if (pendingOpenPath) {
@@ -76,6 +80,8 @@ app.on('open-file', (event, filePath) => {
 });
 
 app.whenReady().then(() => {
+  // Remove application menu entirely
+  Menu.setApplicationMenu(null);
   createMainWindow();
 
   // Initial file path from argv (Windows/Linux)

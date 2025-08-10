@@ -2,6 +2,9 @@
 
 Electron-based Windows app to quickly preview `.vrm` avatars (VRoid/VRM 0.x/1.x). After install, double-click any `.vrm` file to open it in the viewer.
 
+## Screenshot
+![VRM Previewer Screenshot](src/assets/screenshot.png)
+
 ## Features
 - Double-click `.vrm` files to preview (Windows file association)
 - Drag-and-drop `.vrm` onto the window
