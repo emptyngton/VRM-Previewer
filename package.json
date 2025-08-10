@@ -1,0 +1,56 @@
+{
+  "name": "vrm-previewer",
+  "version": "0.1.0",
+  "description": "Quickly preview .vrm avatars by double-clicking on Windows.",
+  "main": "src/main.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@pixiv/three-vrm": "^3.4.2",
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^25.1.8"
+  },
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.example.vrm-previewer",
+    "productName": "VRM Previewer",
+    "files": [
+      "src/**/*",
+      "node_modules/**",
+      "package.json"
+    ],
+    "asar": true,
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "fileAssociations": [
+        {
+          "ext": "vrm",
+          "name": "VRM Avatar",
+          "description": ".vrm avatar file",
+          "role": "Viewer",
+          "icon": ""
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    }
+  }
+}

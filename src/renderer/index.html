@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; connect-src 'self' file: blob: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VRM Previewer</title>
+    <style>
+      html, body, #app { height: 100%; margin: 0; background: #1e1e1e; color: #ddd; font-family: system-ui, sans-serif; }
+      html, body { overflow: hidden; }
+      #toolbar { position: absolute; top: 8px; left: 8px; right: 8px; display: flex; gap: 8px; align-items: center; z-index: 10; }
+      #toolbar button { background: #2b2b2b; color: #ddd; border: 1px solid #444; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+      #toolbar button:hover { background: #333; }
+      #toolbar button:active { background: #3a3a3a; }
+      /* File input: style the native button */
+      #toolbar input[type="file"] { color: #bbb; background: transparent; border: none; padding: 0; }
+      #toolbar input[type="file"]::file-selector-button { background: #2b2b2b; color: #ddd; border: 1px solid #444; padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-right: 8px; }
+      #toolbar input[type="file"]::file-selector-button:hover { background: #333; }
+      #toolbar input[type="file"]::file-selector-button:active { background: #3a3a3a; }
+      /* WebKit fallback */
+      #toolbar input[type="file"]::-webkit-file-upload-button { background: #2b2b2b; color: #ddd; border: 1px solid #444; padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-right: 8px; }
+      #toolbar input[type="file"]::-webkit-file-upload-button:hover { background: #333; }
+      #toolbar input[type="file"]::-webkit-file-upload-button:active { background: #3a3a3a; }
+      #toolbar .path { flex: 1; opacity: 0.8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="toolbar">
+        <input id="fileInput" type="file" accept=".vrm" />
+        <button id="resetBtn">Reset Camera</button>
+        <div class="path" id="filePath"></div>
+      </div>
+    </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../../node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="./index.js"></script>
+  </body>
+  </html>
+
+
