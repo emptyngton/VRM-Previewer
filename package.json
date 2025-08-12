@@ -1,6 +1,6 @@
 {
   "name": "vrm-previewer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Quickly preview .vrm avatars by double-clicking on Windows.",
   "main": "src/main.js",
   "author": "",
