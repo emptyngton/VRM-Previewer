@@ -44,7 +44,7 @@
           "name": "VRM Avatar",
           "description": ".vrm avatar file",
           "role": "Viewer",
-          "icon": "src/assets/vrm-viewer-logo.ico"
+          "icon": "src/assets/vrm-file.ico"
         }
       ]
     },
